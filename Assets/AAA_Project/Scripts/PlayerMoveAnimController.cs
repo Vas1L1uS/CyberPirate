@@ -63,35 +63,36 @@ public class PlayerMoveAnimController: MonoBehaviour
         if (animState != _animState)
         {
             _animState = animState;
+            SetAllMoveAnimFalse();
 
             switch (animState)
             {
                 case AnimState.Idle:
-                    _animator.SetTrigger(_idleParameter);
+                    _animator.SetBool(_idleParameter, true);
                     break;
                 case AnimState.Up:
-                    _animator.SetTrigger(_upParameter);
+                    _animator.SetBool(_upParameter, true);
                     break;
                 case AnimState.UpRight:
-                    _animator.SetTrigger(_upRightParameter);
+                    _animator.SetBool(_upRightParameter, true);
                     break;
                 case AnimState.Right:
-                    _animator.SetTrigger(_rightParameter);
+                    _animator.SetBool(_rightParameter, true);
                     break;
                 case AnimState.DownRight:
-                    _animator.SetTrigger(_downRightParameter);
+                    _animator.SetBool(_downRightParameter, true);
                     break;
                 case AnimState.Down:
-                    _animator.SetTrigger(_downParameter);
+                    _animator.SetBool(_downParameter, true);
                     break;
                 case AnimState.DownLeft:
-                    _animator.SetTrigger(_downLeftParameter);
+                    _animator.SetBool(_downLeftParameter, true);
                     break;
                 case AnimState.Left:
-                    _animator.SetTrigger(_leftParameter);
+                    _animator.SetBool(_leftParameter, true);
                     break;
                 case AnimState.UpLeft:
-                    _animator.SetTrigger(_upLeftParameter);
+                    _animator.SetBool(_upLeftParameter, true);
                     break;
             }
         }
@@ -113,6 +114,19 @@ public class PlayerMoveAnimController: MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         _isReadyToAttack = true;
         _animator.SetBool(_isAttackedParameter, false);
+    }
+
+    private void SetAllMoveAnimFalse()
+    {
+        _animator.SetBool(_idleParameter, false);
+        _animator.SetBool(_upParameter, false);
+        _animator.SetBool(_upRightParameter, false);
+        _animator.SetBool(_rightParameter, false);
+        _animator.SetBool(_downRightParameter, false);
+        _animator.SetBool(_downParameter, false);
+        _animator.SetBool(_downLeftParameter, false);
+        _animator.SetBool(_leftParameter, false);
+        _animator.SetBool(_upLeftParameter, false);
     }
 
     private enum AnimState
