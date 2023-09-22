@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMoveAnimController: MonoBehaviour
@@ -16,13 +17,19 @@ public class PlayerMoveAnimController: MonoBehaviour
     [SerializeField] private string _downLeftParameter;
     [SerializeField] private string _leftParameter;
     [SerializeField] private string _upLeftParameter;
+    [SerializeField] private string _isAttackedParameter;
+    [SerializeField] private string _attackParameter;
 
     private PlayerInput _playerInput;
     private AnimState _animState;
 
+    private bool _isReadyToAttack = true;
+
     private void Start()
     {
         _playerInput = _playerController.Input;
+
+        _playerInput.Player.Attack.performed += context => Attack();
     }
 
 
@@ -88,6 +95,24 @@ public class PlayerMoveAnimController: MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void Attack()
+    {
+        if (_isReadyToAttack)
+        {
+            StartCoroutine(ReloadAttack());
+        }
+    }
+
+    private IEnumerator ReloadAttack()
+    {
+        _isReadyToAttack = false;
+        _animator.SetTrigger(_attackParameter);
+        _animator.SetBool(_isAttackedParameter, true);
+        yield return new WaitForSeconds(0.5f);
+        _isReadyToAttack = true;
+        _animator.SetBool(_isAttackedParameter, false);
     }
 
     private enum AnimState
