@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMoveAnimController: MonoBehaviour
 {
     [SerializeField] private PlayerController _playerController;
+    [SerializeField] private PlayerAttackController _playerAttackController;
     [SerializeField] private PlayerRotation _playerRotation;
     [SerializeField] private Animator _animator;
     [SerializeField] private string _idleParameter;
@@ -28,8 +29,8 @@ public class PlayerMoveAnimController: MonoBehaviour
     private void Start()
     {
         _playerInput = _playerController.Input;
-
-        _playerInput.Player.Attack.performed += context => Attack();
+        _playerAttackController.Attack_notifier += Attack;
+        _playerAttackController.ReadyAttack_notifier += ReadyToAttack;
     }
 
 
@@ -48,7 +49,7 @@ public class PlayerMoveAnimController: MonoBehaviour
         else
         {
             var angle = Vector2.SignedAngle(new Vector2((int)Math.Round(inputDirection.x), (int)Math.Round(inputDirection.y)), new Vector2((int)Math.Round(_playerRotation.Direction.x), (int)Math.Round(_playerRotation.Direction.y)));
-            Debug.Log($"{_playerRotation.Direction}, {inputDirection}     {angle}");
+            //Debug.Log($"{_playerRotation.Direction}, {inputDirection}     {angle}");
 
             if (angle == 0) animState = AnimState.Up;
             else if (angle == 45) animState = AnimState.UpRight;
@@ -98,21 +99,14 @@ public class PlayerMoveAnimController: MonoBehaviour
         }
     }
 
-    private void Attack()
+    private void Attack(object sender, EventArgs e)
     {
-        if (_isReadyToAttack)
-        {
-            StartCoroutine(ReloadAttack());
-        }
-    }
-
-    private IEnumerator ReloadAttack()
-    {
-        _isReadyToAttack = false;
         _animator.SetTrigger(_attackParameter);
         _animator.SetBool(_isAttackedParameter, true);
-        yield return new WaitForSeconds(0.5f);
-        _isReadyToAttack = true;
+    }
+
+    private void ReadyToAttack(object sender, EventArgs e)
+    {
         _animator.SetBool(_isAttackedParameter, false);
     }
 

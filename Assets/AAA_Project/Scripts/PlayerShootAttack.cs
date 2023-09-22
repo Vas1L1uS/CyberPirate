@@ -11,6 +11,7 @@ public class PlayerShootAttack : MonoBehaviour
     [SerializeField] private Transform _bulletSpawnPoint;
     [SerializeField] private GameObject _bullet_prefab;
     [SerializeField] private float _bulletSpeed;
+    [SerializeField] private AudioSource _audioSource;
 
     [Header("Debug")]
     [SerializeField] private int _bulletLeft;
@@ -26,7 +27,7 @@ public class PlayerShootAttack : MonoBehaviour
         {
             return;
         }
-
+        _audioSource.Play();
         Vector3 direction = (new Vector3(_playerController.MouseWorldOnGroundPos.x, _playerController.MouseWorldOnGroundPos.y + 1.5f, _playerController.MouseWorldOnGroundPos.z)
             - _bulletSpawnPoint.position).normalized;
 
