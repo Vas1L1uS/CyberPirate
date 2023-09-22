@@ -4,6 +4,7 @@ public class PlayerRotation : MonoBehaviour
 {
     public Vector2 Direction => _direction;
 
+    [SerializeField] private PlayerController _playerController;
     [SerializeField] private float _speedRotate;
     [SerializeField] private LayerMask _layerMask;
 
@@ -11,14 +12,11 @@ public class PlayerRotation : MonoBehaviour
 
     private void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out RaycastHit hit, 200, _layerMask);
-        Rotate(hit);
+        Rotate(_playerController.MouseWorldOnGroundPos);
     }
 
-    private void Rotate(RaycastHit hit)
+    private void Rotate(Vector3 targetPos)
     {
-        var targetPos = hit.point;
         this.transform.LookAt(new Vector3(targetPos.x, this.transform.position.y, targetPos.z));
 
         var pos = this.transform.position;
