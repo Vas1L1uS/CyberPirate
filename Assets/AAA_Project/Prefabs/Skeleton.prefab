@@ -120,8 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b039a2b24042ded48869538caf6bfcd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  _skeletonAttack: {fileID: 5428819873476086597}
   _characterHealth: {fileID: 3058616072241575413}
-  _player: {fileID: 0}
   _agent: {fileID: 1656925717661594658}
   _collider: {fileID: 8097282231776051929}
 --- !u!114 &3058616072241575413

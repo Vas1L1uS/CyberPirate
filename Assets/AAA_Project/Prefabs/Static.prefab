@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1526665688317215052}
   - component: {fileID: 3414987017418168696}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9221605495278429379}
   - component: {fileID: 2974683586287135668}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GameObject (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8412768554514488455}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: MapBorders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5774276060331201561}
   - component: {fileID: 2727199203701845333}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1811079727390728458}
   - component: {fileID: 6495168487428650423}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3644,9 +3644,9 @@ Transform:
   - {fileID: 283890387738383583}
   - {fileID: 2380532784110421523}
   - {fileID: 5016617004232987482}
-  - {fileID: 931401053054795473}
+  - {fileID: 5498240294180613243}
   - {fileID: 6430862680083537354}
-  - {fileID: 8086955110328972444}
+  - {fileID: 3502128065116284464}
   - {fileID: 4871478600224121074}
   - {fileID: 1157736218927517580}
   - {fileID: 2925991304976924510}
@@ -6591,7 +6591,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d7e9e52ae2ae324891d765429f74827, type: 3}
---- !u!4 &931401053054795473 stripped
+--- !u!4 &5498240294180613243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4656911371330294443, guid: 8d7e9e52ae2ae324891d765429f74827, type: 3}
   m_PrefabInstance: {fileID: 931401053054795472}
@@ -7895,7 +7895,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d7e9e52ae2ae324891d765429f74827, type: 3}
---- !u!4 &8086955110328972444 stripped
+--- !u!4 &3502128065116284464 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4656911371330294443, guid: 8d7e9e52ae2ae324891d765429f74827, type: 3}
   m_PrefabInstance: {fileID: 8086955110328972443}

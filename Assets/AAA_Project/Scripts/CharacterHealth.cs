@@ -73,6 +73,7 @@ public class CharacterHealth : MonoBehaviour, IHealth, IEditorDebugLogger
         if (maxHealth > 0)
         {
             _maxHealth = maxHealth;
+            _currentHealth = maxHealth;
             NewMaxHealth_notifier?.Invoke(this, new IntValueEventArgs() { Value = maxHealth });
         }
     }
