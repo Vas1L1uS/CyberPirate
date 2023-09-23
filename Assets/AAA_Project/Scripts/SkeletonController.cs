@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class SkeletonController : MonoBehaviour
 {
+    public Transform Player { get => _player; set => _player = value; }
+
     [SerializeField] private Transform _player;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private Animator _animator;

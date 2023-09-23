@@ -14,10 +14,10 @@ TagManager:
   - Sand
   - PlayerBorder
   - Player
-  - 
-  - 
-  - 
-  - 
+  - EntityBorder
+  - Enemy
+  - NoBulletCollision
+  - Bullet
   - 
   - 
   - 

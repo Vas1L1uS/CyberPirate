@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2945140966425775188}
-  - component: {fileID: 5102844941093141604}
-  m_Layer: 0
+  - component: {fileID: 5912996956076375831}
+  m_Layer: 9
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6793554970907749414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5102844941093141604
+--- !u!65 &5912996956076375831
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,8 +51,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.996841, y: 1.2752162, z: 1.9669356}
-  m_Center: {x: 0.009968519, y: 0.28713423, z: -0.0049841404}
+  m_Size: {x: 1.7840366, y: 1.321455, z: 1.964365}
+  m_Center: {x: 0.023520947, y: 0.3175348, z: -0.003920555}
 --- !u!1001 &6470888978721983437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,8 +111,38 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: cb650be83f5f324489b41557901a15dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2945140966425775188}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cb650be83f5f324489b41557901a15dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5874230518091435047}
   m_SourcePrefab: {fileID: 100100000, guid: cb650be83f5f324489b41557901a15dd, type: 3}
+--- !u!1 &6128377560813008540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cb650be83f5f324489b41557901a15dd, type: 3}
+  m_PrefabInstance: {fileID: 6470888978721983437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &5874230518091435047
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128377560813008540}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2234395093120480531, guid: cb650be83f5f324489b41557901a15dd, type: 3}
 --- !u!4 &6793554970907749414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cb650be83f5f324489b41557901a15dd, type: 3}

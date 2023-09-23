@@ -12,17 +12,25 @@ public class SkeletonAttack : MonoBehaviour, IDamager, IAttack
     public bool IsReadyToAttack => _isReadyToAttack;
 
     [SerializeField] private SkeletonController _skeletonController;
-    [SerializeField] private CharacterHealth _player;
+    [SerializeField] private SkeletonVision _skeletonVision;
+    [SerializeField] private SphereZone _sphereZone;
     [SerializeField] private Animator _animator;
-    [SerializeField] private float _distanceAttack;
-    [SerializeField] private float _timeToDamage;
     [SerializeField] private float _reloadTime;
+    [SerializeField] private float _timeToDamage;
     [SerializeField] private int _damage;
     [SerializeField] private bool _isReadyToAttack = true;
 
+    private bool _playerNearby;
+
+    private void Start()
+    {
+        _skeletonVision.PlayerInZone_notifier += PlayerNearbyTrue;
+        _skeletonVision.PlayerExitZone_notifier += PlayerNearbyFalse;
+    }
+
     private void Update()
     {
-        if (Vector2.Distance(new Vector2(_player.transform.position.x, _player.transform.position.z), new Vector2(this.transform.position.x, this.transform.position.z)) < _distanceAttack)
+        if (_playerNearby)
         {
             Attack();
         }
@@ -48,11 +56,27 @@ public class SkeletonAttack : MonoBehaviour, IDamager, IAttack
         }
     }
 
+    private void PlayerNearbyTrue(object sender, EventArgs e) { _playerNearby = true; }
+    private void PlayerNearbyFalse(object sender, EventArgs e) { _playerNearby = false; }
+
+    private void AllDamage()
+    {
+        if (_sphereZone.Hits.Count > 0)
+        {
+            foreach (var item in _sphereZone.Hits)
+            {
+                if (item.transform.gameObject.TryGetComponent(out IHealth health)) GiveDamage(health);
+            }
+        }
+    }
+
     private IEnumerator ReloadAttack()
     {
         _isReadyToAttack = false;
         Attack_notifier?.Invoke(this, EventArgs.Empty);
-        yield return new WaitForSeconds(_reloadTime);
+        yield return new WaitForSeconds(_timeToDamage);
+        AllDamage();
+        yield return new WaitForSeconds(_reloadTime - _timeToDamage);
         ReadyAttack_notifier?.Invoke(this, EventArgs.Empty);
         _isReadyToAttack = true;
         _skeletonController.Go();

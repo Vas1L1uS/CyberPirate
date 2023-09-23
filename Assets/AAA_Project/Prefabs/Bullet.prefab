@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 327550937908849500}
   - component: {fileID: 3340709866859609384}
   - component: {fileID: 7904042009418341205}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8985302162176800264}
   - component: {fileID: 6664713143773641494}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 5303898037269603517}
   - component: {fileID: 9138658401698122741}
   - component: {fileID: 1699267068052758612}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,6 +321,3 @@ MonoBehaviour:
   _damage: 1
   _timerToDestroy: 5
   _render: {fileID: 4046970272800064687}
-  _collisionMask:
-    serializedVersion: 2
-    m_Bits: 4294967295

@@ -15,7 +15,6 @@ public class Bullet : MonoBehaviour, IDamager
     [SerializeField] private int _damage;
     [SerializeField] private float _timerToDestroy;
     [SerializeField] private GameObject _render;
-    [SerializeField] private LayerMask _collisionMask;
 
     private Collider _myCollider;
     private Rigidbody _myRB;
@@ -40,11 +39,6 @@ public class Bullet : MonoBehaviour, IDamager
 
     private void OnTriggerEnter(Collider collision)
     {
-        //if (StandartMethods.CheckBitInNumber(collision.gameObject.layer, _collisionMask) == false)
-        //{
-        //    return;
-        //}
-
         if (collision.CompareTag(_senderTag))
         {
             return;
@@ -53,7 +47,7 @@ public class Bullet : MonoBehaviour, IDamager
 
         Instantiate(_boomParticleSystem, this.transform.position, Quaternion.identity);
 
-        if (collision.TryGetComponent<IHealth>(out var target))
+        if (collision.gameObject.TryGetComponent<IHealth>(out var target))
         {
             target.GetDamage(Damage);
         }
