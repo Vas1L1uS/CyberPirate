@@ -11,6 +11,7 @@ public interface IHealth
     int CurrentHealth { get; }
     void GetDamage(int damage);
     void GetHealth(int health);
-    void SetMaxHealth(int maxHealth);
+    void SetMaxHealth();
+    void SetNewMaxHealth(int maxHealth);
     void Die();
 }

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Weapon
+  m_Name: Weapon 2
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,11 +42,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: d999965d9c7327e41873b39b864a9dea, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97f8fcbfb4a5b4d48b3341c69c2a49ed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ef7dcc821a7d5e44c87e906b5d2600ef, type: 3}
+        m_Texture: {fileID: 2800000, guid: 116f8e4da0eef9a4eada5ca03d5425ff, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -81,5 +81,5 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 39.396626, g: 39.396626, b: 39.396626, a: 1}
+    - _EmissionColor: {r: 11.984313, g: 10.758062, b: 0, a: 1}
   m_BuildTextureStacks: []

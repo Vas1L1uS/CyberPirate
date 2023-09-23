@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public CharacterHealth Health;
+    public PlayerAttackController MeleeAttack;
+    public PlayerShootAttack ShootAttack;
+
     public PlayerInput Input => _playerInput;
     public Vector3 MouseWorldOnGroundPos;
 

@@ -21,7 +21,7 @@ public class SkeletonController : MonoBehaviour
     private void Start()
     {
         _skeletonAttack.SetNewDamage(Damage);
-        _characterHealth.SetMaxHealth(Health);
+        _characterHealth.SetNewMaxHealth(Health);
 
         _agent.destination = Player.position;
         _agent.isStopped = false;

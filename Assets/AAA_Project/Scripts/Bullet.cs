@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour, IDamager
 {
     public event EventHandler GaveDamage_notifier;
     public int Damage => _damage;
+    public Material Material;
 
     [SerializeField] private string _senderTag;
     [SerializeField] private TrailRenderer _trailRenderer;
@@ -19,11 +20,11 @@ public class Bullet : MonoBehaviour, IDamager
     private Collider _myCollider;
     private Rigidbody _myRB;
 
-
     private void Awake()
     {
         _myCollider = this.GetComponent<Collider>();
         _myRB = this.GetComponent<Rigidbody>();
+        _trailRenderer.material = Material;
     }
 
     public void GiveDamage(IHealth target)
@@ -45,7 +46,9 @@ public class Bullet : MonoBehaviour, IDamager
         }
 
 
-        Instantiate(_boomParticleSystem, this.transform.position, Quaternion.identity);
+        var partSys = Instantiate(_boomParticleSystem, this.transform.position, Quaternion.identity);
+        partSys.GetComponent<ParticleSystemRenderer>().material = Material;
+
 
         if (collision.gameObject.TryGetComponent<IHealth>(out var target))
         {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class LevelController : MonoBehaviour
 {
@@ -54,11 +55,18 @@ public class LevelController : MonoBehaviour
 
     private void FinishLevel()
     {
-        Debug.Log("Finish level");
+        _levelSettings.SkeletonHealth += _level.AddedSkeletonHealth_NextLevel;
+        _levelSettings.SkeletonDamage += _level.AddedSkeletonDamage_NextLevel;
+        _levelSettings.SkeletonCount += _level.AddedCountSkeleton_NextLevel;
+
+        StartLevel(_levelSettings);
     }
 
     private void StartLevel(LevelSettings levelSettings)
     {
+        var playerHealth =_player.GetComponent<CharacterHealth>();
+        playerHealth.SetMaxHealth();
+
         SpawnSkeletons(levelSettings.SkeletonCount);
 
         foreach (var skeleton in _skeletons)

@@ -13,4 +13,6 @@ public class LevelConfig : ScriptableObject
     public int AddedCountSkeleton_NextLevel;
     public int AddedSkeletonHealth_NextLevel;
     public int AddedSkeletonDamage_NextLevel;
+
+    public int AddedPoints;
 }

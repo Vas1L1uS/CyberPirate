@@ -5,7 +5,9 @@ public class PlayerShootAttack : MonoBehaviour
 {
     public event EventHandler Shoot_notifier;
 
-    public int BulletLeft => _bulletLeft;
+    public int BulletLeft { get => _bulletLeft; set => _bulletLeft = value; }
+    public int Damage => _damage;
+    public int MaxBullets => _maxBullets;
 
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private Transform _bulletSpawnPoint;
@@ -16,9 +18,28 @@ public class PlayerShootAttack : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private int _bulletLeft;
 
+    private int _damage;
+    private int _maxBullets;
+
     private void Start()
     {
         _playerController.Input.Player.Shoot.performed += Context => Shoot();
+    }
+
+    public void SetMaxAmmo()
+    {
+        _bulletLeft = _maxBullets;
+    }
+
+    public void SetNewMaxAmmo(int count)
+    {
+        _maxBullets = count;
+        SetMaxAmmo();
+    }
+
+    public void SetNewDamage(int count)
+    {
+        _damage = count;
     }
 
     public void Shoot()
@@ -32,9 +53,9 @@ public class PlayerShootAttack : MonoBehaviour
             - _bulletSpawnPoint.position).normalized;
 
         GameObject newBullet = Instantiate(_bullet_prefab, _bulletSpawnPoint.position, Quaternion.identity);
+        newBullet.GetComponent<Bullet>().SetNewDamage(Damage);
         newBullet.GetComponent<Rigidbody>().velocity = direction * _bulletSpeed;
         _bulletLeft--;
-
         Shoot_notifier?.Invoke(this, EventArgs.Empty);
     }
 }

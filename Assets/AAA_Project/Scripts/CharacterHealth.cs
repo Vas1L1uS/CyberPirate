@@ -23,7 +23,7 @@ public class CharacterHealth : MonoBehaviour, IHealth, IEditorDebugLogger
 
     private void Awake()
     {
-        _currentHealth = _maxHealth;
+        SetMaxHealth();
     }
 
     public void Die()
@@ -68,12 +68,17 @@ public class CharacterHealth : MonoBehaviour, IHealth, IEditorDebugLogger
         }
     }
 
-    public void SetMaxHealth(int maxHealth)
+    public void SetMaxHealth()
+    {
+        _currentHealth = MaxHealth;
+    }
+
+    public void SetNewMaxHealth(int maxHealth)
     {
         if (maxHealth > 0)
         {
             _maxHealth = maxHealth;
-            _currentHealth = maxHealth;
+            SetMaxHealth();
             NewMaxHealth_notifier?.Invoke(this, new IntValueEventArgs() { Value = maxHealth });
         }
     }
