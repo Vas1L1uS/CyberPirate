@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3058616072241575413}
   - component: {fileID: 5428819873476086597}
   - component: {fileID: 3062740723781221791}
+  - component: {fileID: 5063976734494715125}
   m_Layer: 10
   m_Name: Skeleton
   m_TagString: Untagged
@@ -155,7 +156,7 @@ MonoBehaviour:
   _sphereZone: {fileID: 2848638716593372043}
   _animator: {fileID: 7390769032956224327}
   _reloadTime: 1
-  _timeToDamage: 0.2
+  _timeToDamage: 0.3
   _damage: 1
   _isReadyToAttack: 1
 --- !u!54 &3062740723781221791
@@ -185,6 +186,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5063976734494715125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2928451167490637587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb822b55e3fb8841a98a630f2536f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myHealth: {fileID: 3058616072241575413}
+  _myRenderer: {fileID: 7377565898560068323}
+  _damageMaterial: {fileID: 2100000, guid: ea18df09b4e897c4da86620df6931ffe, type: 2}
+  _time: 0.2
 --- !u!1 &4159634819807642629
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,5 +594,10 @@ PrefabInstance:
 --- !u!4 &1279419201937605824 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 47418ba7fecf4364aa9347ed464ad774, type: 3}
+  m_PrefabInstance: {fileID: 1606608044957066027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7377565898560068323 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8082185181601348040, guid: 47418ba7fecf4364aa9347ed464ad774, type: 3}
   m_PrefabInstance: {fileID: 1606608044957066027}
   m_PrefabAsset: {fileID: 0}
