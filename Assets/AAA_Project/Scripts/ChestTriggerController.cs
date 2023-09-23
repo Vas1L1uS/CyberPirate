@@ -1,20 +1,33 @@
+using System.Collections;
 using UnityEngine;
 
 public class ChestTriggerController : MonoBehaviour
 {
-    public bool ChestActive;
+    private bool _chestActive;
 
     [SerializeField] private GameObject _chestPanel;
     [SerializeField] private string _playerTag;
+    [SerializeField] private float _timeToActivateChest;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (ChestActive) return;
+        if (_chestActive == false) return;
 
         if (other.CompareTag(_playerTag))
         {
-            ChestActive = true;
+            _chestActive = false;
             _chestPanel.SetActive(true);
         }
+    }
+
+    public void ActivateChest()
+    {
+        StartCoroutine(TimerToSchestActive(_timeToActivateChest));
+    }
+
+    private IEnumerator TimerToSchestActive(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _chestActive = true;
     }
 }

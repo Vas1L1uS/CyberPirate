@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour, IDamager
     private Collider _myCollider;
     private Rigidbody _myRB;
 
-    private void Awake()
+    private void Start()
     {
         _myCollider = this.GetComponent<Collider>();
         _myRB = this.GetComponent<Rigidbody>();

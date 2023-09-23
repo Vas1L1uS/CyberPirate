@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public PlayerAttackController MeleeAttack;
     public PlayerShootAttack ShootAttack;
 
+
     public PlayerInput Input => _playerInput;
     public Vector3 MouseWorldOnGroundPos;
 

@@ -52,6 +52,7 @@ public class LevelController : MonoBehaviour
 
     private void StartLevel()
     {
+        
         StartLevel(_levelSettings);
     }
 
@@ -74,12 +75,13 @@ public class LevelController : MonoBehaviour
         _levelSettings.SkeletonDamage += _level.AddedSkeletonDamage_NextLevel;
         _levelSettings.SkeletonCount += _level.AddedCountSkeleton_NextLevel;
 
-        _chestController.TriggerController.ChestActive = true;
+        _chestController.TriggerController.ActivateChest();
         _chestController.AnimController.ChestUp();
     }
 
     private void StartLevel(LevelSettings levelSettings)
     {
+        _chestController.AnimController.ChestDown();
         _levelAudioSource.Play();
         _playerController.Health.SetMaxHealth();
         _playerController.ShootAttack.SetMaxAmmo();

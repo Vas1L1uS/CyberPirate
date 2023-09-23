@@ -20,6 +20,12 @@ public class UpgradeChest : MonoBehaviour
 
     [SerializeField] private UpdateConfig _updateConfig;
 
+    [Header("SoundSettings")]
+    [SerializeField] private AudioSource _swordSource;
+    [SerializeField] private AudioSource _blasterSource;
+    [SerializeField] private List<AudioClip> _swordClips;
+    [SerializeField] private List<AudioClip> _blasterClips;
+
     [Header("MaxUpgradeSettings")]
     [SerializeField] private int _maxMeleeUpgrade;
     [SerializeField] private int _maxRangeUpgrade;
@@ -44,7 +50,7 @@ public class UpgradeChest : MonoBehaviour
         _currentWeaponMaterialIndex++;
         CurrentMeleeUpgrade++;
         _weaponMeshRenderer.material = _weaponMaterials[_currentWeaponMaterialIndex];
-
+        _swordSource.clip = _swordClips[CurrentMeleeUpgrade];
         ItemUpgraded?.Invoke();
         return true;
     }
@@ -57,7 +63,7 @@ public class UpgradeChest : MonoBehaviour
         _currentBulletMaterialIndex++;
         CurrentRangeUpgrade++;
         _playerController.ShootAttack.BulletMaterial = _bulletMaterials[_currentBulletMaterialIndex];
-
+        _blasterSource.clip = _blasterClips[CurrentRangeUpgrade];
         ItemUpgraded?.Invoke();
         return true;
     }

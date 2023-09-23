@@ -6,11 +6,11 @@ public class ChestAnimController : MonoBehaviour
 
     public void ChestUp()
     {
-        _animator.SetTrigger("Up");
+        _animator.Play("Up");
     }
 
     public void ChestDown()
     {
-        _animator.SetTrigger("Down");
+        _animator.Play("Down");
     }
 }

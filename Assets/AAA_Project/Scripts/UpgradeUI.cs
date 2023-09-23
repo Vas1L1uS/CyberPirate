@@ -31,11 +31,12 @@ public class UpgradeUI : MonoBehaviour
     {
         if (_upgradeChest.UpgradeMelee())
         {
-            _meleeImage = _meleeImages[_upgradeChest.CurrentMeleeUpgrade];
+            //_meleeImage = _meleeImages[_upgradeChest.CurrentMeleeUpgrade];
+            _upgradePanel.SetActive(false);
         }
         else
         {
-            _meleeImage = _maxLvl;
+            //_meleeImage = _maxLvl;
             _meleeButton.interactable = false;
         }
     }
@@ -44,11 +45,12 @@ public class UpgradeUI : MonoBehaviour
     {
         if (_upgradeChest.UpgradeRange())
         {
-            _rangeImage = _rangeImages[_upgradeChest.CurrentRangeUpgrade];
+            //_rangeImage = _rangeImages[_upgradeChest.CurrentRangeUpgrade];
+            _upgradePanel.SetActive(false);
         }
         else
         {
-            _rangeImage = _maxLvl;
+            //_rangeImage = _maxLvl;
             _rangeButton.interactable = false;
         }
     }
@@ -57,11 +59,12 @@ public class UpgradeUI : MonoBehaviour
     {
         if (_upgradeChest.UpgradeHealth())
         {
-            _healthImage = _healthImages[_upgradeChest.CurrentHealthUpgrade];
+            //_healthImage = _healthImages[_upgradeChest.CurrentHealthUpgrade];
+            _upgradePanel.SetActive(false);
         }
         else
         {
-            _healthImage = _maxLvl;
+            //_healthImage = _maxLvl;
             _healthButton.interactable = false;
         }
     }
@@ -70,11 +73,12 @@ public class UpgradeUI : MonoBehaviour
     {
         if (_upgradeChest.UpgradeAmmo())
         {
-            _ammoImage = _ammoImages[_upgradeChest.CurrentAmmoUpgrade];
+            //_ammoImage = _ammoImages[_upgradeChest.CurrentAmmoUpgrade];
+            _upgradePanel.SetActive(false);
         }
         else
         {
-            _ammoImage = _maxLvl;
+            //_ammoImage = _maxLvl;
             _ammoButton.interactable = false;
         }
     }
