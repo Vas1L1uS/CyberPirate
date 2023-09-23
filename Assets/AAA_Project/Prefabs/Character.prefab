@@ -963,7 +963,6 @@ MonoBehaviour:
   _playerController: {fileID: 1048306824958029863}
   _audioSource: {fileID: 3439053703367990529}
   _grassAudioClips:
-  - {fileID: 8300000, guid: 6984b27bc0819684daf7eccb45015617, type: 3}
   - {fileID: 8300000, guid: 387401cd5910ae148a08020f69e2528b, type: 3}
   - {fileID: 8300000, guid: fddc593a91128f84da79c0829cc155e4, type: 3}
   - {fileID: 8300000, guid: f218127d759767e4980a4eaa17e1f5fc, type: 3}
@@ -974,10 +973,8 @@ MonoBehaviour:
   _sandAudioClips:
   - {fileID: 8300000, guid: 645cedcedc2395d4eae40a4119dbd5d4, type: 3}
   - {fileID: 8300000, guid: 2fcc868797fabea47b67176406ccd363, type: 3}
-  - {fileID: 8300000, guid: c5d6d206963e3244fb373762c33b516d, type: 3}
   - {fileID: 8300000, guid: ec81b9c2c08411943af65f3f0fa33caf, type: 3}
   - {fileID: 8300000, guid: 75492e1e1dc58ab4892153d44c25e57e, type: 3}
-  - {fileID: 8300000, guid: 65c8315dca8331847926b2c91cc0cace, type: 3}
   _grassLayerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -6162,7 +6159,7 @@ Transform:
   m_GameObject: {fileID: 5708195604726854033}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.235, z: 0.559}
+  m_LocalPosition: {x: 0, y: 1, z: 0.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6183,7 +6180,7 @@ MonoBehaviour:
   _trigger:
     serializedVersion: 2
     m_Bits: 1024
-  _radius: 0.75
+  _radius: 0.64
 --- !u!1 &6249222381279078034
 GameObject:
   m_ObjectHideFlags: 0
@@ -6955,27 +6952,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e240675cbdbd23b4894e769f1d21dfca, type: 3}
       propertyPath: m_LocalScale.x
-      value: 70.000015
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e240675cbdbd23b4894e769f1d21dfca, type: 3}
       propertyPath: m_LocalScale.y
-      value: 70
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e240675cbdbd23b4894e769f1d21dfca, type: 3}
       propertyPath: m_LocalScale.z
-      value: 70.000015
+      value: 70.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e240675cbdbd23b4894e769f1d21dfca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.248
+      value: -0.212
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e240675cbdbd23b4894e769f1d21dfca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.158
+      value: 0.147
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e240675cbdbd23b4894e769f1d21dfca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.483
+      value: -0.431
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e240675cbdbd23b4894e769f1d21dfca, type: 3}
       propertyPath: m_LocalRotation.w
