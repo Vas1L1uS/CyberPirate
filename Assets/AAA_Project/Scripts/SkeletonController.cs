@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +7,8 @@ public class SkeletonController : MonoBehaviour
     public Transform Player;
     public int Damage { get;set; }
     public int Health { get; set; }
+    public TypeSkeleton TypeSkeleton;
+
 
     [SerializeField] private SkeletonAttack _skeletonAttack;
     [SerializeField] private CharacterHealth _characterHealth;
@@ -15,8 +16,6 @@ public class SkeletonController : MonoBehaviour
     [SerializeField] private Collider _collider;
 
     private bool _isStopped = false;
-
-    private bool _isActiveScript = true;
 
     private void Start()
     {
@@ -30,39 +29,35 @@ public class SkeletonController : MonoBehaviour
 
     private void Update()
     {
-        if (_isActiveScript)
-        {
-            _agent.destination = Player.position;
+        if (_agent != null) _agent.destination = Player.position;
 
-            if (_isStopped) return;
-            this.transform.LookAt(new Vector3(Player.transform.position.x, this.transform.position.y, Player.transform.position.z));
-        }
+        if (_isStopped) return;
+        this.transform.LookAt(new Vector3(Player.transform.position.x, this.transform.position.y, Player.transform.position.z));
     }
 
     public void Stop()
     {
-        _agent.isStopped = true;
+        if (_agent != null) _agent.isStopped = true;
         _isStopped = true;
     }
 
     public void Go()
     {
-        _agent.isStopped = false;
-        StartCoroutine(Timer());
+        if (_agent != null) _agent.isStopped = false;
+        _isStopped = false;
     }
 
     private void Die(object sender, EventArgs e)
     {
-        _isActiveScript = false;
-        StopAllCoroutines();
         Stop();
         Destroy(_collider);
+        Destroy(_agent);
         Destroy(this);
     }
+}
 
-    private IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(0.2f);
-        _isStopped = false;
-    }
+public enum TypeSkeleton
+{
+    defaultS,
+    hardS
 }

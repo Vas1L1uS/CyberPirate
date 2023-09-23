@@ -31,6 +31,8 @@ public class PlayerAttackController : MonoBehaviour, IAttack, IDamager
 
     public void Attack()
     {
+        if (_playerController.Health.CurrentHealth == 0) return;
+
         if (_isReadyToAttack)
         {
             _audioSource.Play();

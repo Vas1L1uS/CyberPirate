@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartSkeletonHealth: 1
   StartSkeletonDamage: 1
-  StartPlayerShootDamage: 1
+  StartPlayerShootDamage: 2
   StartPlayerMeleeDamage: 2
   StartPlayerMaxAmmo: 10
   StartPlayerMaxHealth: 5

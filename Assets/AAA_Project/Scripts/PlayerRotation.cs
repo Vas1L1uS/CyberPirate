@@ -12,6 +12,8 @@ public class PlayerRotation : MonoBehaviour
 
     private void Update()
     {
+        if (_playerController.Health.CurrentHealth == 0) return;
+
         Rotate(_playerController.MouseWorldOnGroundPos);
     }
 

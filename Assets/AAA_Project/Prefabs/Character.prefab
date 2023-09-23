@@ -6700,6 +6700,8 @@ MonoBehaviour:
   Health: {fileID: 5379653420859620347}
   MeleeAttack: {fileID: 6319455019030261803}
   ShootAttack: {fileID: 5251311163685019583}
+  MyCollider: {fileID: 3523365747502806943}
+  MyRB: {fileID: 8828211514716723098}
   MouseWorldOnGroundPos: {x: 0, y: 0, z: 0}
   _groundLayerMask:
     serializedVersion: 2
@@ -6765,6 +6767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67854235a19a9334785af4c17a31c297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletMaterial: {fileID: 2100000, guid: bb944ef22962dc7469cd76e26395c953, type: 2}
   _playerController: {fileID: 1048306824958029863}
   _bulletSpawnPoint: {fileID: 4148240371658784863}
   _bullet_prefab: {fileID: 5497895876166343225, guid: d927ee06c7dbe344d9527eb9189c1637, type: 3}

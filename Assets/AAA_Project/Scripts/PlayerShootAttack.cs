@@ -49,6 +49,8 @@ public class PlayerShootAttack : MonoBehaviour
 
     public void Shoot()
     {
+        if (_playerController.Health.CurrentHealth == 0) return;
+
         if (_bulletLeft <= 0)
         {
             _noAmmoAudioSource.Play();

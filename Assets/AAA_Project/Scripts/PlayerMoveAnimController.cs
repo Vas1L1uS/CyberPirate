@@ -31,6 +31,7 @@ public class PlayerMoveAnimController: MonoBehaviour
         _playerInput = _playerController.Input;
         _playerAttackController.Attack_notifier += Attack;
         _playerAttackController.ReadyAttack_notifier += ReadyToAttack;
+        _playerController.Health.Dead_notifier += DeadAnim;
     }
 
 
@@ -39,8 +40,15 @@ public class PlayerMoveAnimController: MonoBehaviour
         Rotate();
     }
 
+    private void DeadAnim(object sender, EventArgs e)
+    {
+        _animator.SetBool("Dead", true);
+    }
+
     private void Rotate()
     {
+        if (_playerController.Health.CurrentHealth == 0) return;
+
         Vector2 inputDirection = _playerInput.Player.Movement.ReadValue<Vector2>();
 
         AnimState animState = AnimState.Idle;

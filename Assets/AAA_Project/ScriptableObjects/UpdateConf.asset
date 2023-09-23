@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: UpdateConf
   m_EditorClassIdentifier: 
   UpdateMeleeDamage: 1
-  UpdateShootDamage: 1
+  UpdateShootDamage: 2
   UpdateHealth: 1
-  UpdateMaxAmmo: 10
+  UpdateMaxAmmo: 20

@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (_playerController.Health.CurrentHealth == 0) return;
+
         Move();
     }
 

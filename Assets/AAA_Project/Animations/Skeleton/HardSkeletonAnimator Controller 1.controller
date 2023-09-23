@@ -34,7 +34,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Walk
-  m_Speed: 3.2
+  m_Speed: 2.2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7046967295685929750}
@@ -87,7 +87,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeletonAnimator Controller
+  m_Name: HardSkeletonAnimator Controller 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Attack

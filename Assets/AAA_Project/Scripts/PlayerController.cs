@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -5,7 +6,8 @@ public class PlayerController : MonoBehaviour
     public CharacterHealth Health;
     public PlayerAttackController MeleeAttack;
     public PlayerShootAttack ShootAttack;
-
+    public Collider MyCollider;
+    public Rigidbody MyRB;
 
     public PlayerInput Input => _playerInput;
     public Vector3 MouseWorldOnGroundPos;
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _playerInput = new PlayerInput();
+        Health.Dead_notifier += Dead;
     }
 
     private void Update()
@@ -24,6 +27,12 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
         Physics.Raycast(ray, out RaycastHit hit, 200, _groundLayerMask);
         MouseWorldOnGroundPos = hit.point;
+    }
+
+    private void Dead(object sender, EventArgs e)
+    {
+        Destroy(MyCollider);
+        Destroy(MyRB);
     }
 
     private void OnEnable()
