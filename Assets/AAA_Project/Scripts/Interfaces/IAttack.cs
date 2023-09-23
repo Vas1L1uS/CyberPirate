@@ -2,11 +2,10 @@
 
 internal interface IAttack
 {
-    event EventHandler StartedAttack_notifier;
-    event EventHandler FinishedAttack_notifier;
+    public event EventHandler Attack_notifier;
+    public event EventHandler ReadyAttack_notifier;
 
     bool IsReadyToAttack { get; }
 
-    void StartAttack();
-    void FinishAttack();
+    void Attack();
 }

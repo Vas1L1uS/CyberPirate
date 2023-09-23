@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerAttackController : MonoBehaviour
+public class PlayerAttackController : MonoBehaviour, IAttack
 {
     public event EventHandler Attack_notifier;
     public event EventHandler ReadyAttack_notifier;
+
+    public bool IsReadyToAttack => _isReadyToAttack;
 
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private AudioSource _audioSource;
@@ -21,7 +23,7 @@ public class PlayerAttackController : MonoBehaviour
         _playerInput.Player.Attack.performed += context => Attack();
     }
 
-    private void Attack()
+    public void Attack()
     {
         if (_isReadyToAttack)
         {
