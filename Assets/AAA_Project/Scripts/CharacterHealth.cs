@@ -35,11 +35,17 @@ public class CharacterHealth : MonoBehaviour, IHealth, IEditorDebugLogger
 
     public void GetDamage(int damage)
     {
-        if (damage > 0)
+        if (damage > 0 && _currentHealth > 0)
         {
             var previousHealthPoints = CurrentHealth;
             _currentHealth -= damage;
             GetDamage_notifier?.Invoke(this, new IntValueEventArgs() { Value = damage });
+
+            if (_currentHealth <= 0)
+            {
+                _currentHealth = 0;
+                Die();
+            }
 
             PrintLogInEditor($"{this.gameObject.name} received {damage} damage. Was {previousHealthPoints} health, current {CurrentHealth}, max {MaxHealth}. Removed {previousHealthPoints - CurrentHealth} HP.");
         }

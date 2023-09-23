@@ -12,9 +12,9 @@ public class SkeletonAttack : MonoBehaviour, IDamager, IAttack
     public bool IsReadyToAttack => _isReadyToAttack;
 
     [SerializeField] private SkeletonController _skeletonController;
+    [SerializeField] private CharacterHealth _skeletonHealth;
     [SerializeField] private SkeletonVision _skeletonVision;
     [SerializeField] private SphereZone _sphereZone;
-    [SerializeField] private Animator _animator;
     [SerializeField] private float _reloadTime;
     [SerializeField] private float _timeToDamage;
     [SerializeField] private int _damage;
@@ -26,6 +26,7 @@ public class SkeletonAttack : MonoBehaviour, IDamager, IAttack
     {
         _skeletonVision.PlayerInZone_notifier += PlayerNearbyTrue;
         _skeletonVision.PlayerExitZone_notifier += PlayerNearbyFalse;
+        _skeletonHealth.Dead_notifier += Die;
     }
 
     private void Update()
@@ -68,6 +69,12 @@ public class SkeletonAttack : MonoBehaviour, IDamager, IAttack
                 if (item.transform.gameObject.TryGetComponent(out IHealth health)) GiveDamage(health);
             }
         }
+    }
+
+    private void Die(object sender, EventArgs e)
+    {
+        StopAllCoroutines();
+        Destroy(this);
     }
 
     private IEnumerator ReloadAttack()

@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7005589086687911643}
   - component: {fileID: 3058616072241575413}
   - component: {fileID: 5428819873476086597}
-  - component: {fileID: 3062740723781221791}
   - component: {fileID: 5063976734494715125}
+  - component: {fileID: 1398218334022288943}
   m_Layer: 10
   m_Name: Skeleton
   m_TagString: Untagged
@@ -120,9 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b039a2b24042ded48869538caf6bfcd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterHealth: {fileID: 3058616072241575413}
   _player: {fileID: 0}
   _agent: {fileID: 1656925717661594658}
-  _animator: {fileID: 7390769032956224327}
+  _collider: {fileID: 8097282231776051929}
 --- !u!114 &3058616072241575413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b302ed71dda02f4e873da5de99e792e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 5
   _enabledPrintDebugLogInEditor: 0
   _currentHealth: 0
   _isAlive: 0
@@ -152,40 +153,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skeletonController: {fileID: 7005589086687911643}
+  _skeletonHealth: {fileID: 3058616072241575413}
   _skeletonVision: {fileID: 2170106426536415232}
   _sphereZone: {fileID: 2848638716593372043}
-  _animator: {fileID: 7390769032956224327}
   _reloadTime: 0.8
   _timeToDamage: 0.2
   _damage: 1
   _isReadyToAttack: 1
---- !u!54 &3062740723781221791
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2928451167490637587}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &5063976734494715125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +176,21 @@ MonoBehaviour:
   _myRenderer: {fileID: 7377565898560068323}
   _damageMaterial: {fileID: 2100000, guid: ea18df09b4e897c4da86620df6931ffe, type: 2}
   _time: 0.2
+--- !u!114 &1398218334022288943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2928451167490637587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b76f84fa2f7a94c9b65f6b5c641c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7390769032956224327}
+  _skeletonAttack: {fileID: 5428819873476086597}
+  _skeletonHealth: {fileID: 3058616072241575413}
 --- !u!1 &4159634819807642629
 GameObject:
   m_ObjectHideFlags: 0
