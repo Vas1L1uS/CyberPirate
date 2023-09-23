@@ -17,6 +17,7 @@ MonoBehaviour:
   StartPlayerShootDamage: 1
   StartPlayerMeleeDamage: 2
   StartPlayerMaxAmmo: 10
+  StartPlayerMaxHealth: 5
   StartCountSkeletons: 5
   AddedCountSkeleton_NextLevel: 5
   AddedSkeletonHealth_NextLevel: 1

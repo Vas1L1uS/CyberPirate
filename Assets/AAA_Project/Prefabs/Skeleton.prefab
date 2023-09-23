@@ -308,7 +308,7 @@ MonoBehaviour:
   _trigger:
     serializedVersion: 2
     m_Bits: 256
-  _radius: 0.65
+  _radius: 0.7
 --- !u!1001 &1606608044957066027
 PrefabInstance:
   m_ObjectHideFlags: 0

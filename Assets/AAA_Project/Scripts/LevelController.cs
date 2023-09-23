@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class LevelController : MonoBehaviour
 {
@@ -9,12 +8,15 @@ public class LevelController : MonoBehaviour
     [SerializeField] private LevelConfig _level;
     [SerializeField] private GameObject _skeleton_prefab;
     [SerializeField] private List<Transform> _skeletonSpawnerPoints;
+    [SerializeField] private AudioSource _levelAudioSource;
 
     private List<SkeletonController> _skeletons = new List<SkeletonController>();
     private LevelSettings _levelSettings;
+    private PlayerController _playerController;
 
     private void Awake()
     {
+
         _levelSettings = new LevelSettings()
         {
             SkeletonCount = _level.StartCountSkeletons,
@@ -25,6 +27,12 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
+        _playerController = _player.GetComponent<PlayerController>();
+        _playerController.Health.SetNewMaxHealth(_level.StartPlayerMaxHealth);
+        _playerController.ShootAttack.SetNewMaxAmmo(_level.StartPlayerMaxAmmo);
+        _playerController.ShootAttack.SetNewDamage(_level.StartPlayerShootDamage);
+        _playerController.MeleeAttack.SetNewDamage(_level.StartPlayerMeleeDamage);
+
         StartLevel(_levelSettings);
     }
 
@@ -64,8 +72,9 @@ public class LevelController : MonoBehaviour
 
     private void StartLevel(LevelSettings levelSettings)
     {
-        var playerHealth =_player.GetComponent<CharacterHealth>();
-        playerHealth.SetMaxHealth();
+        _levelAudioSource.Play();
+        _playerController.Health.SetMaxHealth();
+        _playerController.ShootAttack.SetMaxAmmo();
 
         SpawnSkeletons(levelSettings.SkeletonCount);
 

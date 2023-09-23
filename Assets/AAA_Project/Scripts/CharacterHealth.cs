@@ -10,6 +10,7 @@ public class CharacterHealth : MonoBehaviour, IHealth, IEditorDebugLogger
     public bool EnabledPrintDebugLogInEditor { get => _enabledPrintDebugLogInEditor; set => _enabledPrintDebugLogInEditor = value; }
 
     public event EventHandler Dead_notifier;
+    public event EventHandler<IntValueEventArgs> HealthChanged_notifier;
     public event EventHandler<IntValueEventArgs> GetDamage_notifier;
     public event EventHandler<IntValueEventArgs> GetHealth_notifier;
     public event EventHandler<IntValueEventArgs> NewMaxHealth_notifier;
@@ -40,6 +41,7 @@ public class CharacterHealth : MonoBehaviour, IHealth, IEditorDebugLogger
             var previousHealthPoints = CurrentHealth;
             _currentHealth -= damage;
             GetDamage_notifier?.Invoke(this, new IntValueEventArgs() { Value = damage });
+            HealthChanged_notifier?.Invoke(this, new IntValueEventArgs() { Value = _currentHealth });
 
             if (_currentHealth <= 0)
             {
@@ -63,6 +65,7 @@ public class CharacterHealth : MonoBehaviour, IHealth, IEditorDebugLogger
             var previousHealthPoints = CurrentHealth;
             _currentHealth += health;
             GetHealth_notifier?.Invoke(this, new IntValueEventArgs() { Value = health });
+            HealthChanged_notifier?.Invoke(this, new IntValueEventArgs() { Value = _currentHealth });
 
             PrintLogInEditor($"{this.gameObject.name} received {health} health. Was {previousHealthPoints} health, current {CurrentHealth}, max {MaxHealth}. Added {CurrentHealth - previousHealthPoints} HP.");
         }
@@ -71,6 +74,7 @@ public class CharacterHealth : MonoBehaviour, IHealth, IEditorDebugLogger
     public void SetMaxHealth()
     {
         _currentHealth = MaxHealth;
+        HealthChanged_notifier?.Invoke(this, new IntValueEventArgs() { Value = _currentHealth });
     }
 
     public void SetNewMaxHealth(int maxHealth)
@@ -80,6 +84,7 @@ public class CharacterHealth : MonoBehaviour, IHealth, IEditorDebugLogger
             _maxHealth = maxHealth;
             SetMaxHealth();
             NewMaxHealth_notifier?.Invoke(this, new IntValueEventArgs() { Value = maxHealth });
+            HealthChanged_notifier?.Invoke(this, new IntValueEventArgs() { Value = _currentHealth });
         }
     }
 

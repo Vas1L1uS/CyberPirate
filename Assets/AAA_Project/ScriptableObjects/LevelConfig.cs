@@ -8,6 +8,7 @@ public class LevelConfig : ScriptableObject
     public int StartPlayerShootDamage;
     public int StartPlayerMeleeDamage;
     public int StartPlayerMaxAmmo;
+    public int StartPlayerMaxHealth;
     public int StartCountSkeletons;
 
     public int AddedCountSkeleton_NextLevel;
