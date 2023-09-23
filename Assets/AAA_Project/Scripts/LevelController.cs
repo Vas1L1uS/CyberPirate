@@ -9,6 +9,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GameObject _skeleton_prefab;
     [SerializeField] private List<Transform> _skeletonSpawnerPoints;
     [SerializeField] private AudioSource _levelAudioSource;
+    [SerializeField] private ChestController _chestController;
 
     private List<SkeletonController> _skeletons = new List<SkeletonController>();
     private LevelSettings _levelSettings;
@@ -33,6 +34,7 @@ public class LevelController : MonoBehaviour
         _playerController.ShootAttack.SetNewDamage(_level.StartPlayerShootDamage);
         _playerController.MeleeAttack.SetNewDamage(_level.StartPlayerMeleeDamage);
 
+        _chestController.UpgradeChest.ItemUpgraded += StartLevel;
         StartLevel(_levelSettings);
     }
 
@@ -46,6 +48,11 @@ public class LevelController : MonoBehaviour
         {
             FinishLevel();
         }
+    }
+
+    private void StartLevel()
+    {
+        StartLevel(_levelSettings);
     }
 
     private void SpawnSkeletons(int countSkeletons)
@@ -67,7 +74,8 @@ public class LevelController : MonoBehaviour
         _levelSettings.SkeletonDamage += _level.AddedSkeletonDamage_NextLevel;
         _levelSettings.SkeletonCount += _level.AddedCountSkeleton_NextLevel;
 
-        StartLevel(_levelSettings);
+        _chestController.TriggerController.ChestActive = true;
+        _chestController.AnimController.ChestUp();
     }
 
     private void StartLevel(LevelSettings levelSettings)
