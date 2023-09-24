@@ -20,7 +20,7 @@ public class PlayerSoundRunController : MonoBehaviour
 
     private void Update()
     {
-        if (_playerController.Health.CurrentHealth == 0) return;
+        if (_playerController.Health.CurrentHealth == 0 || _playerController.PauseController.IsPaused) return;
 
         _inputDirection = _playerController.Input.Player.Movement.ReadValue<Vector2>();
 

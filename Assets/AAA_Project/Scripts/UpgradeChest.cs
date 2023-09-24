@@ -7,6 +7,12 @@ public class UpgradeChest : MonoBehaviour
     public event Action ItemUpgraded;
 
     public PlayerController _playerController;
+
+    public bool MeleeMax { get; private set; }
+    public bool RangeMax { get; private set; }
+    public bool HealthMax { get; private set; }
+    public bool AmmoMax { get; private set; }
+
     public int MaxMeleeUpgrade => _maxMeleeUpgrade;
     public int MaxRangeUpgrade => _maxRangeUpgrade;
     public int MaxHealthUpgrade => _maxHealthUpgrade;
@@ -54,6 +60,7 @@ public class UpgradeChest : MonoBehaviour
         _weaponMeshRenderer.material = _weaponMaterials[_currentWeaponMaterialIndex];
         _swordSource.clip = _swordClips[CurrentMeleeUpgrade];
         ItemUpgraded?.Invoke();
+        if (CurrentHealthUpgrade == MaxHealthUpgrade) MeleeMax = true;
         CheckAllItemsUpgraded();
         return true;
     }
@@ -68,6 +75,7 @@ public class UpgradeChest : MonoBehaviour
         _playerController.ShootAttack.BulletMaterial = _bulletMaterials[_currentBulletMaterialIndex];
         _blasterSource.clip = _blasterClips[CurrentRangeUpgrade];
         ItemUpgraded?.Invoke();
+        if (CurrentHealthUpgrade == MaxHealthUpgrade) RangeMax = true;
         CheckAllItemsUpgraded();
         return true;
     }
@@ -80,6 +88,7 @@ public class UpgradeChest : MonoBehaviour
         CurrentHealthUpgrade++;
 
         ItemUpgraded?.Invoke();
+        if (CurrentHealthUpgrade == MaxHealthUpgrade) HealthMax = false;
         CheckAllItemsUpgraded();
         return true;
     }
@@ -92,6 +101,7 @@ public class UpgradeChest : MonoBehaviour
         CurrentAmmoUpgrade++;
 
         ItemUpgraded?.Invoke();
+        if (CurrentHealthUpgrade == MaxHealthUpgrade) AmmoMax = true;
         CheckAllItemsUpgraded();
         return true;
     }

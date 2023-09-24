@@ -49,7 +49,7 @@ public class PlayerShootAttack : MonoBehaviour
 
     public void Shoot()
     {
-        if (_playerController.Health.CurrentHealth == 0) return;
+        if (_playerController.Health.CurrentHealth == 0 || _playerController.PauseController.IsPaused) return;
 
         if (_bulletLeft <= 0)
         {

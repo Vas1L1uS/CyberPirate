@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public PauseController PauseController;
     public CharacterHealth Health;
     public PlayerAttackController MeleeAttack;
     public PlayerShootAttack ShootAttack;

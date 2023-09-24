@@ -47,7 +47,7 @@ public class PlayerMoveAnimController: MonoBehaviour
 
     private void Rotate()
     {
-        if (_playerController.Health.CurrentHealth == 0) return;
+        if (_playerController.Health.CurrentHealth == 0 || _playerController.PauseController.IsPaused) return;
 
         Vector2 inputDirection = _playerInput.Player.Movement.ReadValue<Vector2>();
 
