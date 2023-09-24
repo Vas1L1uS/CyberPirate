@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
+    public int CurrentWave { get; private set; } = 0;
+
     [SerializeField] private Transform _player;
     [SerializeField] private LevelConfig _level;
     [SerializeField] private GameObject _skeleton_prefab;
@@ -12,6 +15,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] private List<Transform> _skeletonSpawnerPoints;
     [SerializeField] private AudioSource _levelAudioSource;
     [SerializeField] private ChestController _chestController;
+    [SerializeField] private Text _currentWave;
+    [SerializeField] private GameObject _deadPanel;
 
     private List<SkeletonController> _skeletons = new List<SkeletonController>();
     private LevelSettings _levelSettings;
@@ -38,6 +43,8 @@ public class LevelController : MonoBehaviour
         _playerController.ShootAttack.SetNewDamage(_level.StartPlayerShootDamage);
         _playerController.MeleeAttack.SetNewDamage(_level.StartPlayerMeleeDamage);
 
+        _playerController.Health.Dead_notifier += PlayerDead;
+
         _chestController.UpgradeChest.ItemUpgraded += StartLevel;
         StartLevel();
     }
@@ -60,13 +67,23 @@ public class LevelController : MonoBehaviour
         _levelSettings.SkeletonDamage += _level.AddedSkeletonDamage_NextLevel;
         _levelSettings.SkeletonCount += _level.AddedCountSkeleton_NextLevel;
 
-        _chestController.TriggerController.ActivateChest();
-        _chestController.AnimController.ChestUp();
+        if (_chestController.UpgradeChest.AllItemsUpgraded)
+        {
+            StartLevel();
+        }
+        else
+        {
+            _chestController.TriggerController.ActivateChest();
+            _chestController.AnimController.ChestUp();
+        }
     }
 
     private void StartLevel()
     {
-        _chestController.AnimController.ChestDown();
+        if (_chestController.UpgradeChest.AllItemsUpgraded == false) _chestController.AnimController.ChestDown();
+
+        CurrentWave++;
+        _currentWave.text = CurrentWave.ToString();
         _levelAudioSource.Play();
         _playerController.Health.SetMaxHealth();
         _playerController.ShootAttack.SetMaxAmmo();
@@ -100,7 +117,7 @@ public class LevelController : MonoBehaviour
 
             if (skeletonC.TypeSkeleton == TypeSkeleton.hardS)
             {
-                skeletonC.Health = (int)Math.Round(_levelSettings.SkeletonHealth * 1.5f);
+                skeletonC.Health = (int)Math.Ceiling(_levelSettings.SkeletonHealth * 1.5f);
             }
             else
             {
@@ -113,6 +130,11 @@ public class LevelController : MonoBehaviour
         }
 
         _isSpawning = false;
+    }
+
+    private void PlayerDead(object sender, EventArgs e)
+    {
+        _deadPanel.SetActive(true);
     }
 
     private class LevelSettings

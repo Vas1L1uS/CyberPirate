@@ -180,6 +180,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1b06501f7dda1c649aece1836f849ea4, type: 3}
   - {fileID: 8300000, guid: c30510dd62136344da93fc1126b9010c, type: 3}
   - {fileID: 8300000, guid: 842836e4d4e97ee4285f45872e7b43c3, type: 3}
+  _deathClip: {fileID: 8300000, guid: 9998c96631d9ef24887b53e1e4432b76, type: 3}
 --- !u!82 &3920450754679030677
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6308,7 +6309,7 @@ MonoBehaviour:
   _trigger:
     serializedVersion: 2
     m_Bits: 1024
-  _radius: 0.64
+  _radius: 0.65
 --- !u!1 &6249222381279078034
 GameObject:
   m_ObjectHideFlags: 0
@@ -6775,6 +6776,8 @@ MonoBehaviour:
   _audioSource: {fileID: 902277327534686150}
   _noAmmoAudioSource: {fileID: 4656682572115724085}
   _bulletLeft: 1000
+  _damage: 0
+  _maxBullets: 0
 --- !u!114 &6163934298457825949
 MonoBehaviour:
   m_ObjectHideFlags: 0

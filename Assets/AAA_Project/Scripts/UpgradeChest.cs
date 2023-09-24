@@ -17,6 +17,8 @@ public class UpgradeChest : MonoBehaviour
     public int CurrentHealthUpgrade { get; private set; } = 0;
     public int CurrentAmmoUpgrade { get; private set; } = 0;
 
+    public bool AllItemsUpgraded { get; private set; }
+
 
     [SerializeField] private UpdateConfig _updateConfig;
 
@@ -52,6 +54,7 @@ public class UpgradeChest : MonoBehaviour
         _weaponMeshRenderer.material = _weaponMaterials[_currentWeaponMaterialIndex];
         _swordSource.clip = _swordClips[CurrentMeleeUpgrade];
         ItemUpgraded?.Invoke();
+        CheckAllItemsUpgraded();
         return true;
     }
 
@@ -65,6 +68,7 @@ public class UpgradeChest : MonoBehaviour
         _playerController.ShootAttack.BulletMaterial = _bulletMaterials[_currentBulletMaterialIndex];
         _blasterSource.clip = _blasterClips[CurrentRangeUpgrade];
         ItemUpgraded?.Invoke();
+        CheckAllItemsUpgraded();
         return true;
     }
 
@@ -76,6 +80,7 @@ public class UpgradeChest : MonoBehaviour
         CurrentHealthUpgrade++;
 
         ItemUpgraded?.Invoke();
+        CheckAllItemsUpgraded();
         return true;
     }
 
@@ -87,6 +92,16 @@ public class UpgradeChest : MonoBehaviour
         CurrentAmmoUpgrade++;
 
         ItemUpgraded?.Invoke();
+        CheckAllItemsUpgraded();
         return true;
+    }
+
+    private void CheckAllItemsUpgraded()
+    {
+        if (_maxMeleeUpgrade == CurrentMeleeUpgrade && _maxRangeUpgrade == CurrentMeleeUpgrade &&
+            _maxHealthUpgrade == MaxHealthUpgrade && _maxAmmoUpgrade == CurrentAmmoUpgrade)
+        {
+            AllItemsUpgraded = true;
+        }
     }
 }

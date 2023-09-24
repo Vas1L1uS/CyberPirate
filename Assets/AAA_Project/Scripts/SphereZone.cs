@@ -20,7 +20,7 @@ public class SphereZone : MonoBehaviour
 
     private void Update()
     {
-        Hits = Physics.SphereCastAll(this.transform.position, _radius, Vector3.one, 10, _trigger).ToList();
+        Hits = Physics.SphereCastAll(this.transform.position, _radius, Vector3.up, 0, _trigger).ToList();
 
         if (Hits.Count > 0)
         {

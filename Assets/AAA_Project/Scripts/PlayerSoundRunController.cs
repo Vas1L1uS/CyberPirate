@@ -20,6 +20,8 @@ public class PlayerSoundRunController : MonoBehaviour
 
     private void Update()
     {
+        if (_playerController.Health.CurrentHealth == 0) return;
+
         _inputDirection = _playerController.Input.Player.Movement.ReadValue<Vector2>();
 
         if (_inputDirection != Vector2.zero)

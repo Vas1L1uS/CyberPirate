@@ -22,8 +22,8 @@ public class PlayerShootAttack : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private int _bulletLeft;
 
-    private int _damage;
-    private int _maxBullets;
+    [SerializeField] private int _damage;
+    [SerializeField] private int _maxBullets;
 
     private void Start()
     {
