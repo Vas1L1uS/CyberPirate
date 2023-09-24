@@ -13,7 +13,7 @@ public class PauseController : MonoBehaviour
     [SerializeField] private GameObject _pausePanel;
 
     private PlayerInput _playerInput;
-    private bool _isPaused;
+    private bool _isPaused = false;
 
     private void Awake()
     {

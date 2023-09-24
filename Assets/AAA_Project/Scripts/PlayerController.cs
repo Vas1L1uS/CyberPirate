@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _playerInput = new PlayerInput();
+        _playerInput.Enable();
         Health.Dead_notifier += Dead;
     }
 

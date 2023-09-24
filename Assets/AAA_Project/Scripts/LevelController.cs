@@ -8,7 +8,7 @@ using UnityEngine.Video;
 public class LevelController : MonoBehaviour
 {
     public int CurrentWave { get; private set; } = 0;
-    public bool StopGame { get; private set; }
+    public bool StopGame { get; private set; } = false;
 
     [SerializeField] private Transform _player;
     [SerializeField] private LevelConfig _level;
@@ -33,6 +33,8 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
+
         _levelSettings = new LevelSettings()
         {
             SkeletonCount = _level.StartCountSkeletons,
