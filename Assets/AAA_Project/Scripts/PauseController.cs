@@ -4,6 +4,7 @@ public class PauseController : MonoBehaviour
 {
     public bool IsPaused => _isPaused;
 
+    [SerializeField] private CharacterHealth _playerHealth;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private GameObject _gamePanel;
     [SerializeField] private GameObject _pausePanel;
@@ -31,6 +32,8 @@ public class PauseController : MonoBehaviour
 
     private void PauseKey()
     {
+        if (_playerHealth.CurrentHealth == 0) return;
+
         if (_isPaused)
         {
             Resume();

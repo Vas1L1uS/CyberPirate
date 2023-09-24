@@ -34,6 +34,9 @@ public class UpgradeUI : MonoBehaviour
         if (_upgradeChest.UpgradeMelee())
         {
             _meleeImage.sprite = _lvlSprites[_upgradeChest.CurrentMeleeUpgrade];
+
+            if (_upgradeChest.MeleeMax) _meleeButton.interactable = false;
+
             _upgradePanel.SetActive(false);
         }
         else
@@ -54,6 +57,9 @@ public class UpgradeUI : MonoBehaviour
         if (_upgradeChest.UpgradeRange())
         {
             _rangeImage.sprite = _lvlSprites[_upgradeChest.CurrentRangeUpgrade];
+
+            if (_upgradeChest.RangeMax) _rangeButton.interactable = false;
+
             _upgradePanel.SetActive(false);
         }
         else
@@ -74,6 +80,13 @@ public class UpgradeUI : MonoBehaviour
         if (_upgradeChest.UpgradeHealth())
         {
             _healthImage.sprite = _lvlSprites[_upgradeChest.CurrentHealthUpgrade];
+
+            if (_upgradeChest.HealthMax)
+            {
+                _healthButton.interactable = false;
+                _healthImage.sprite = _maxLvl;
+            }
+
             _upgradePanel.SetActive(false);
         }
         else
@@ -94,6 +107,13 @@ public class UpgradeUI : MonoBehaviour
         if (_upgradeChest.UpgradeAmmo())
         {
             _ammoImage.sprite = _lvlSprites[_upgradeChest.CurrentAmmoUpgrade];
+
+            if (_upgradeChest.AmmoMax)
+            {
+                _ammoButton.interactable = false;
+                _ammoImage.sprite = _maxLvl;
+            }
+
             _upgradePanel.SetActive(false);
         }
         else
