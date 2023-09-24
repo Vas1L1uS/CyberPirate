@@ -8,6 +8,7 @@ using UnityEngine.Video;
 public class LevelController : MonoBehaviour
 {
     public int CurrentWave { get; private set; } = 0;
+    public bool StopGame { get; private set; }
 
     [SerializeField] private Transform _player;
     [SerializeField] private LevelConfig _level;
@@ -32,7 +33,6 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
-        _pauseController.IsPaused = true;
         _levelSettings = new LevelSettings()
         {
             SkeletonCount = _level.StartCountSkeletons,
@@ -159,15 +159,19 @@ public class LevelController : MonoBehaviour
 
     private IEnumerator TimerVictoryCLip()
     {
+        StopGame = true;
         _gamePanel.SetActive(false);
         _pauseController.IsPaused = true;
         _cameraAudioSource.Pause();
         _videoPlayer.gameObject.SetActive(true);
         _videoPlayer.Play();
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(10);
         _videoPlayer.gameObject.SetActive(false);
-        _cameraAudioSource.Play();
+
+        if (_pauseController.MusicIsActive) _cameraAudioSource.Play();
+
         _victoryPanel.SetActive(true);
+        StopGame = false;
     }
 
     private void PlayerDead(object sender, EventArgs e)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d032b669e136540bbb998c3f58bd09, type: 3}
   m_Name: UpdateConf
   m_EditorClassIdentifier: 
-  UpdateMeleeDamage: 1
+  UpdateMeleeDamage: 2
   UpdateShootDamage: 2
   UpdateHealth: 1
   UpdateMaxAmmo: 20

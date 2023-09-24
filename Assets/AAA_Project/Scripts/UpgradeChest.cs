@@ -108,8 +108,8 @@ public class UpgradeChest : MonoBehaviour
 
     private void CheckAllItemsUpgraded()
     {
-        if (_maxMeleeUpgrade == CurrentMeleeUpgrade && _maxRangeUpgrade == CurrentMeleeUpgrade &&
-            _maxHealthUpgrade == MaxHealthUpgrade && _maxAmmoUpgrade == CurrentAmmoUpgrade)
+        if (_maxMeleeUpgrade == CurrentMeleeUpgrade && _maxRangeUpgrade == CurrentRangeUpgrade &&
+            _maxHealthUpgrade == CurrentHealthUpgrade && _maxAmmoUpgrade == CurrentAmmoUpgrade)
         {
             AllItemsUpgraded = true;
         }

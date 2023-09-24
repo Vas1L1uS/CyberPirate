@@ -366,7 +366,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 70252f705661ad948bdbb7f936ad73a8, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2576,6 +2576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd18397cd3de4c459bd64e2ab90bf88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelController: {fileID: 1829114568}
   _playerHealth: {fileID: 1891550792}
   _audioSource: {fileID: 963194232}
   _gamePanel: {fileID: 2012238041}
@@ -3078,12 +3079,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 266.12, y: 324.08, z: 306.28, w: 245.44}
+  m_RaycastPadding: {x: 378.64, y: 299.2, z: 414.9, w: 222.3}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1efaaf42f9232044ab31a37ac46d97ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12babbd07fd668e46aaa0d8d7354328f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
