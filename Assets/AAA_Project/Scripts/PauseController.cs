@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseController : MonoBehaviour
 {
-    public bool IsPaused => _isPaused;
+    public bool IsPaused { get => _isPaused; set => _isPaused = value; }
 
     [SerializeField] private CharacterHealth _playerHealth;
     [SerializeField] private AudioSource _audioSource;
@@ -71,6 +72,6 @@ public class PauseController : MonoBehaviour
 
     public void Menu()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

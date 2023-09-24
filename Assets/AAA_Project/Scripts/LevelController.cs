@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class LevelController : MonoBehaviour
 {
@@ -13,10 +14,15 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GameObject _skeleton_prefab;
     [SerializeField] private GameObject _hardSkeleton_prefab;
     [SerializeField] private List<Transform> _skeletonSpawnerPoints;
+    [SerializeField] private AudioSource _cameraAudioSource;
+    [SerializeField] private VideoPlayer _videoPlayer;
     [SerializeField] private AudioSource _levelAudioSource;
+    [SerializeField] private GameObject _victoryPanel;
+    [SerializeField] private GameObject _gamePanel;
     [SerializeField] private ChestController _chestController;
     [SerializeField] private Text _currentWave;
     [SerializeField] private GameObject _deadPanel;
+    [SerializeField] private PauseController _pauseController;
 
     private List<SkeletonController> _skeletons = new List<SkeletonController>();
     private LevelSettings _levelSettings;
@@ -26,7 +32,7 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
-
+        _pauseController.IsPaused = true;
         _levelSettings = new LevelSettings()
         {
             SkeletonCount = _level.StartCountSkeletons,
@@ -67,14 +73,21 @@ public class LevelController : MonoBehaviour
         _levelSettings.SkeletonDamage += _level.AddedSkeletonDamage_NextLevel;
         _levelSettings.SkeletonCount += _level.AddedCountSkeleton_NextLevel;
 
-        if (_chestController.UpgradeChest.AllItemsUpgraded)
+        if (CheckCompleteWave())
         {
-            StartLevel();
+            StartCoroutine(TimerVictoryCLip());
         }
         else
         {
-            _chestController.TriggerController.ActivateChest();
-            _chestController.AnimController.ChestUp();
+            if (_chestController.UpgradeChest.AllItemsUpgraded)
+            {
+                StartLevel();
+            }
+            else
+            {
+                _chestController.TriggerController.ActivateChest();
+                _chestController.AnimController.ChestUp();
+            }
         }
     }
 
@@ -89,6 +102,18 @@ public class LevelController : MonoBehaviour
         _playerController.ShootAttack.SetMaxAmmo();
 
         StartCoroutine(TimerSpawn());
+    }
+
+    private bool CheckCompleteWave()
+    {
+        if (CurrentWave == 10)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private IEnumerator TimerSpawn()
@@ -130,6 +155,19 @@ public class LevelController : MonoBehaviour
         }
 
         _isSpawning = false;
+    }
+
+    private IEnumerator TimerVictoryCLip()
+    {
+        _gamePanel.SetActive(false);
+        _pauseController.IsPaused = true;
+        _cameraAudioSource.Pause();
+        _videoPlayer.gameObject.SetActive(true);
+        _videoPlayer.Play();
+        yield return new WaitForSeconds(9);
+        _videoPlayer.gameObject.SetActive(false);
+        _cameraAudioSource.Play();
+        _victoryPanel.SetActive(true);
     }
 
     private void PlayerDead(object sender, EventArgs e)
