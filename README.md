@@ -1,4 +1,4 @@
-# Team8Project
+# Cyber pirate
 ![image](https://github.com/Vas1L1uS/CyberPirate/assets/95376525/884cb364-a565-48cb-b039-dfde80c963b6)
 https://youtu.be/QlPXtEkVQLo?si=l-NPuhvWEUtcd9cN
 
